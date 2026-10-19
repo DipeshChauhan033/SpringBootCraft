@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,6 +35,7 @@
             <div class="container">
                 <div class="banner_content text-center">
                     <h2>Contact Us</h2>
+                    <h4>${result}</h4>
                     <div class="page_link">
                         <a href="${pageContext.request.contextPath}/index.jsp">Home</a>
                         <a href="${pageContext.request.contextPath}/contact.jsp">Contact</a>
@@ -80,7 +81,7 @@
 
                 <div class="col-lg-9">
                     <form class="row contact_form"
-                          action="${pageContext.request.contextPath}/contact_process"
+                          action="saveContact"
                           method="post"
                           id="contactForm"
                           novalidate="novalidate">

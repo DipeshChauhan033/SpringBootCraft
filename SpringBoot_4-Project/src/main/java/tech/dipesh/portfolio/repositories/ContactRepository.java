@@ -1,0 +1,11 @@
+package tech.dipesh.portfolio.repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import tech.dipesh.portfolio.entities.ContactEntity;
+
+@Repository
+public interface ContactRepository extends JpaRepository<ContactEntity, Integer>{
+
+}
