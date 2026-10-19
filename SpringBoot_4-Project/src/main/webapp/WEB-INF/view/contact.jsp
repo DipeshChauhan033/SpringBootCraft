@@ -165,10 +165,31 @@
     <script src="${pageContext.request.contextPath}/js/jquery.ajaxchimp.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/mail-script.js"></script>
 
-    <!-- Google Maps JS -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-    <script src="${pageContext.request.contextPath}/js/gmaps.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/theme.js"></script>
+   <!-- Google Maps JS -->
+
+<script src="${pageContext.request.contextPath}/js/map.js"></script>
+
+<script src="${pageContext.request.contextPath}/js/gmaps.min.js"></script>
+
+<script>
+    const googleMapsScript = document.createElement("script");
+
+    googleMapsScript.src =
+        "https://maps.googleapis.com/maps/api/js?key=" +
+        encodeURIComponent(GOOGLE_MAPS_API_KEY);
+
+    googleMapsScript.async = true;
+
+    googleMapsScript.onload = function () {
+        // Google Maps API is loaded here.
+        // Initialize your existing map here if required.
+    };
+
+    document.head.appendChild(googleMapsScript);
+</script>
+
+<script src="${pageContext.request.contextPath}/js/theme.js"></script>
+   
 
 </body>
 </html>
