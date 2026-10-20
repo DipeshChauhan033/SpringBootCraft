@@ -2,6 +2,7 @@ package tech.dipesh.portfolio.services;
 
 import java.time.LocalDateTime;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,16 +16,24 @@ public class ContactServiceImpl implements ContactService{
 	@Autowired
 	private ContactRepository contactRepository;
 	
+	@Autowired
+	private ModelMapper modelMapper;
+	
 	@Override
 	public ContactEntity saveContact(ContactDTO contactDTO) {
 		
-		ContactEntity contactEntity = new ContactEntity();
-		contactEntity.setName(contactDTO.getName());
-		contactEntity.setEmail(contactDTO.getEmail());
-		contactEntity.setSubject(contactDTO.getSubject());
-		contactEntity.setMessage(contactDTO.getMessage());
-		contactEntity.setDatetime(LocalDateTime.now().toString());
+		// Method 1 : to set data
+//		ContactEntity contactEntity = new ContactEntity();
+//		contactEntity.setName(contactDTO.getName());
+//		contactEntity.setEmail(contactDTO.getEmail());
+//		contactEntity.setSubject(contactDTO.getSubject());
+//		contactEntity.setMessage(contactDTO.getMessage());
+//		contactEntity.setDatetime(LocalDateTime.now().toString());
+//		return contactRepository.save(contactEntity);
 		
+		//Method 2 : using modelmapper
+		ContactEntity contactEntity = modelMapper.map(contactDTO, ContactEntity.class);
+		contactEntity.setDatetime(LocalDateTime.now().toString());
 		return contactRepository.save(contactEntity);
 	}
 

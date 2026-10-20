@@ -13,7 +13,7 @@ public class GlobalExceptionHandler {
 	public String hanleGeneralException(Exception e,RedirectAttributes redirectAttributes,HttpServletRequest httpServletRequest) {
 		
 		String header = httpServletRequest.getHeader("referer");
-		System.out.println(header);    //gives head url(check in concole) after something went worng - used when handle all exception and redirect into particular page when we comes 
+		System.out.println(header);    //gives head URL(check in conSole) after something went wrong - used when handle all exception and redirect into particular page when we comes 
 		
 		redirectAttributes.addFlashAttribute("result", "Something Went Wrong");
 		return "redirect:"+header;

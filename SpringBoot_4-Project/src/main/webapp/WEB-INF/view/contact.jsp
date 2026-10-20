@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>
+    
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,15 +37,16 @@
             <div class="container">
                 <div class="banner_content text-center">
                     <h2>Contact Us</h2>
-                    <h4>${result}</h4>
+                   	<h4>${result}</h4>
                     <div class="page_link">
-                        <a href="${pageContext.request.contextPath}/index.jsp">Home</a>
-                        <a href="${pageContext.request.contextPath}/contact.jsp">Contact</a>
+                        <a href="${pageContext.request.contextPath}/client/home">Home</a>
+                        <a href="${pageContext.request.contextPath}/client/contact">Contact</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    
     <!--================ End Banner Area =================-->
 
     <!--================ Contact Area =================-->
@@ -79,59 +82,90 @@
                     </div>
                 </div>
 
-                <div class="col-lg-9">
-                    <form class="row contact_form"
-                          action="saveContact"
-                          method="post"
-                          id="contactForm"
-                          novalidate="novalidate">
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text"
-                                       class="form-control"
-                                       id="name"
-                                       name="name"
-                                       placeholder="Enter your name">
-                            </div>
-
-                            <div class="form-group">
-                                <input type="email"
-                                       class="form-control"
-                                       id="email"
-                                       name="email"
-                                       placeholder="Enter email address">
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text"
-                                       class="form-control"
-                                       id="subject"
-                                       name="subject"
-                                       placeholder="Enter Subject">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <textarea class="form-control"
-                                          name="message"
-                                          id="message"
-                                          rows="1"
-                                          placeholder="Enter Message"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="col-md-12 text-right">
-                            <button type="submit"
-                                    value="submit"
-                                    class="primary_btn">
-                                <span>Send Message</span>
-                            </button>
-                        </div>
-
-                    </form>
-                </div>
+                
+				<div class="col-lg-9">
+				    <form class="row contact_form"
+				          action="saveContact"
+				          method="post"
+				          id="contactForm"
+				          novalidate="novalidate">
+				
+				        <div class="col-md-6">
+				
+				            <!-- Name -->
+				            <div class="form-group">
+				                <input type="text"
+				                       class="form-control"
+				                       id="name"
+				                       name="name"
+				                       placeholder="Enter your name">
+				                
+				                <c:forEach var="err" items="${errors}">
+				                    <c:if test="${err.field == 'name'}">
+				                            ${err.defaultMessage}
+				                    </c:if>
+				                </c:forEach>
+				            </div>
+				
+				            <!-- Email -->
+				            <div class="form-group">
+				                <input type="email"
+				                       class="form-control"
+				                       id="email"
+				                       name="email"
+				                       placeholder="Enter email address">
+				
+				                <c:forEach var="err" items="${errors}">
+				                    <c:if test="${err.field == 'email'}">
+				                            ${err.defaultMessage}
+				                    </c:if>
+				                </c:forEach>
+				            </div>
+				
+				            <!-- Subject -->
+				            <div class="form-group">
+				                <input type="text"
+				                       class="form-control"
+				                       id="subject"
+				                       name="subject"
+				                       placeholder="Enter Subject">
+				
+				                <c:forEach var="err" items="${errors}">
+				                    <c:if test="${err.field == 'subject'}">
+				                            ${err.defaultMessage}
+				                    </c:if>
+				                </c:forEach>
+				            </div>
+				
+				        </div>
+				
+				        <!-- Message -->
+				        <div class="col-md-6">
+				            <div class="form-group">
+				                <textarea class="form-control"
+				                          name="message"
+				                          id="message"
+				                          rows="5"
+				                          placeholder="Enter Message"></textarea>
+				
+				                <c:forEach var="err" items="${errors}">
+				                    <c:if test="${err.field == 'message'}">
+				                            ${err.defaultMessage}
+				                    </c:if>
+				                </c:forEach>
+				            </div>
+				        </div>
+				
+				        <!-- Submit Button -->
+				        <div class="col-md-12 text-right">
+				            <button type="submit" class="primary_btn">
+				                <span>Send Message</span>
+				            </button>
+				        </div>
+				
+				    </form>
+				</div>
+				
 
             </div>
 
