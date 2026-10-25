@@ -37,4 +37,16 @@ public class ContactServiceImpl implements ContactService{
 		return contactRepository.save(contactEntity);
 	}
 
+	@Override
+	public boolean isContactEmailExist(String email) {
+		return contactRepository.existsByEmail(email);
+	}
+
+	@Override
+	public String ifExistEmailThenName(String email) {
+		return contactRepository.printNameIfEmailExists(email);
+	}
+	
+	
+
 }

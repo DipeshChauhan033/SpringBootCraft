@@ -62,10 +62,15 @@ public class MyController {
 //			}
 //		}
 		
-		
 		if(bindingResult.hasErrors()) {
 			model.addAttribute("errors",bindingResult.getFieldErrors());
 			return "contact";
+		}
+		
+		if(contactService.isContactEmailExist(contactDTO.getEmail())) {
+			String ifExistEmailThenName = contactService.ifExistEmailThenName(contactDTO.getEmail());
+			redirectAttributes.addFlashAttribute("result","Already sent by "+ifExistEmailThenName);
+			return "redirect:contact";
 		}
 		
 		contactService.saveContact(contactDTO);
