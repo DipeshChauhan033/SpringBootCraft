@@ -1,6 +1,7 @@
 package tech.dipesh.portfolio.services;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,17 @@ public class ContactServiceImpl implements ContactService{
 	@Override
 	public String ifExistEmailThenName(String email) {
 		return contactRepository.printNameIfEmailExists(email);
+	}
+
+	@Override
+	public List<ContactEntity> readAllContacts() {
+		List<ContactEntity> allContactData = contactRepository.findAll();
+		return allContactData;
+	}
+
+	@Override
+	public void deleteContactById(int id) {
+		contactRepository.deleteById(id);;
 	}
 	
 	
