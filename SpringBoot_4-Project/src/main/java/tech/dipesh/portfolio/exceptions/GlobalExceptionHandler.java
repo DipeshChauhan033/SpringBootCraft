@@ -2,6 +2,7 @@ package tech.dipesh.portfolio.exceptions;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,6 +17,16 @@ public class GlobalExceptionHandler {
 		System.out.println(header);    //gives head URL(check in conSole) after something went wrong - used when handle all exception and redirect into particular page when we comes 
 		
 		redirectAttributes.addFlashAttribute("result", "Something Went Wrong");
+		return "redirect:"+header;
+	}
+	
+	@ExceptionHandler(MaxUploadSizeExceededException.class)
+	public String handleMaxFileException(Exception e,RedirectAttributes redirectAttributes,HttpServletRequest httpServletRequest) {
+		
+		String header = httpServletRequest.getHeader("referer");
+		System.out.println(header);    //gives head URL(check in conSole) after something went wrong - used when handle all exception and redirect into particular page when we comes 
+		
+		redirectAttributes.addFlashAttribute("result", "File size must not axceed 5MB");
 		return "redirect:"+header;
 	}
 }
