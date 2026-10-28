@@ -23,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import tech.dipesh.portfolio.dto.ServiceDto;
+import tech.dipesh.portfolio.entities.ServiceEntity;
 import tech.dipesh.portfolio.services.ContactService;
 import tech.dipesh.portfolio.services.ServicesService;
 
@@ -95,5 +96,11 @@ public class AdminController {
 		redirectAttributes.addFlashAttribute("result", "Service added successfully");
 		
 		return "redirect:addService";
+	}
+	
+	@GetMapping("/readAllServices")
+	public String readAllServices(Model model) {
+		model.addAttribute("listOfServices",servicesService.readServices());
+		return "admin/readAllServices";
 	}
 }

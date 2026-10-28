@@ -1,6 +1,7 @@
 package tech.dipesh.portfolio.services;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,12 @@ public class ServicesServiceImpl implements ServicesService{
 		serviceEntity.setDatetime(LocalDateTime.now().toString());
 		
 		return serviceRepository.save(serviceEntity);
+	}
+
+	@Override
+	public List<ServiceEntity> readServices() {
+		// TODO Auto-generated method stub
+		return serviceRepository.findAll();
 	}
 
 }

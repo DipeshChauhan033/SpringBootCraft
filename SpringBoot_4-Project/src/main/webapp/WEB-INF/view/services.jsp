@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" %>
+    pageEncoding="UTF-8" isELIgnored="false" %>
+ 
+<%@taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,15 +62,17 @@
 
             <div class="row feature_inner">
 
-                <div class="col-lg-3 col-md-6">
-                    <div class="feature_item">
-                        <img src="${pageContext.request.contextPath}/img/services/s1.png" alt="WordPress Development">
-                        <h4>WP Developing</h4>
-                        <p>Creeping for female light years that lesser can't evening heaven isn't bearing tree.</p>
-                    </div>
-                </div>
+				<c:forEach var="service" items="${listOfServices }">
+	                <div class="col-lg-3 col-md-6">
+	                    <div class="feature_item">
+	                        <img style="width: 100%; height:auto" src="${pageContext.request.contextPath}/img/services/${service.filename}" alt="WordPress Development">
+	                        <h4>${service.title}</h4>
+	                        <p>${service.description}</p>
+	                    </div>
+	                </div>
+	            </c:forEach>
 
-                <div class="col-lg-3 col-md-6">
+               <%--  <div class="col-lg-3 col-md-6">
                     <div class="feature_item">
                         <img src="${pageContext.request.contextPath}/img/services/s2.png" alt="UI UX Design">
                         <h4>UI/UX Design</h4>
@@ -90,7 +94,7 @@
                         <h4>SEO Optimize</h4>
                         <p>Creeping for female light years that lesser can't evening heaven isn't bearing tree.</p>
                     </div>
-                </div>
+                </div> --%>
 
             </div>
         </div>

@@ -20,6 +20,7 @@ import jakarta.validation.Valid;
 import tech.dipesh.portfolio.dto.ContactDTO;
 import tech.dipesh.portfolio.services.ContactService;
 import tech.dipesh.portfolio.services.ContactServiceImpl;
+import tech.dipesh.portfolio.services.ServicesService;
 
 @Controller
 @RequestMapping("/client")
@@ -27,6 +28,9 @@ public class MyController {
 	
 	@Autowired
 	private ContactService contactService;
+	
+	@Autowired
+	private ServicesService servicesService;
 	
 	@GetMapping("/home")
 	public String home() {
@@ -38,8 +42,10 @@ public class MyController {
 		return "about";
 	}
 	
+	//Open and with data loading - Both
 	@GetMapping("/services")
-	public String services() {
+	public String services(Model model) {
+		model.addAttribute("listOfServices",servicesService.readServices());
 		return "services";
 	}
 	
