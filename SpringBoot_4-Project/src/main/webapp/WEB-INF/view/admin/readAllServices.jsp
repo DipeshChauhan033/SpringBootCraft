@@ -27,13 +27,17 @@
 	<div class="row feature_inner">
 
 		<c:forEach var="service" items="${listOfServices }">
-		                <div class="col-lg-3 col-md-6">
+		                <div class="col-lg-4 col-md-8">
 		                    <div class="feature_item">
 		                        <img style="width: 100%; height:auto" src="${pageContext.request.contextPath}/img/services/${service.filename}" alt="WordPress Development">
 		                        <h4>${service.title}</h4>
 		                        <p>${service.description}</p>
 		                    </div>
+		                    <a href="#">Update</a>
+		               		 <a href="#">Delete</a>
 		                </div>
+		                
+		                
 		</c:forEach>
 
 	</div>
